@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/commonLayout}">
+
+<head>
+<title th:text="#{label.estimateDetail}"></title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <h1 class="mb-4" th:text="#{label.estimateDetail}"></h1>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title" th:text="${estimate.title}"></h5>
+
+        <div class="row mb-2">
+          <div class="col-md-4">
+            <label class="form-label" th:text="#{label.estimateNumber}"></label>
+            <p th:text="${estimate.estimateNumber}"></p>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" th:text="#{label.clientName}"></label>
+            <p th:text="${estimate.clientName}"></p>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" th:text="#{label.createdBy}"></label>
+            <p class="form-control-plaintext" th:text="${estimate.fullName}"></p>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" th:text="#{label.createdDate}"></label>
+            <p class="form-control-plaintext" th:text="${#temporals.format(estimate.createdAt, 'yyyy/MM/dd')}"></p>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label" th:text="#{label.updateDate}"></label>
+            <p class="form-control-plaintext" th:text="${#temporals.format(estimate.updateAt, 'yyyy/MM/dd')}"></p>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-4 text-center">
+            <label class="form-label" th:text="#{label.subtotal}"></label>
+            <p class="form-control-plaintext fw-bold fs-5" th:text="${#numbers.formatInteger(estimate.subtotal, 1, 'COMMA')} + ' 円'"></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <label class=" form-label" th:text="#{label.tax}"></label>
+            <p class="form-control-plaintext fw-bold fs-5 text-danger" th:text="${#numbers.formatInteger(estimate.tax, 1, 'COMMA')} + ' 円'"></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <label class="form-label" th:text="#{label.totalWithTax}"></label>
+            <p class="form-control-plaintext fw-bold fs-5 text-danger" th:text="${#numbers.formatInteger(estimate.total, 1, 'COMMA')} + ' 円'"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h4 th:text="#{label.estimateBreakdown}"></h4>
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th th:text="#{label.itemName}"></th>
+          <th th:text="#{label.unitPrice}" class="text-end"></th>
+          <th th:text="#{label.quantity}" class="text-end"></th>
+          <th th:text="#{label.unit}" class="text-center"></th>
+          <th th:text="#{label.rowTotal}" class="text-end"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="item : ${estimateItems}">
+          <td th:text="${item.itemName}"></td>
+          <td class="text-end" th:text="${#numbers.formatDecimal(item.unitPrice, 1, 'COMMA', 2, 'POINT')}"></td>
+          <td class="text-end" th:text="${#numbers.formatDecimal(item.quantity, 1, 'COMMA', 2, 'POINT')}"></td>
+          <td class="text-center" th:text="${item.unit}"></td>
+          <td class="text-end fw-bold"
+            th:text="${(item.unitPrice != null and item.quantity != null) 
+              ? #numbers.formatDecimal(item.unitPrice * item.quantity, 1, 'COMMA', 2, 'POINT') 
+              : '0.00'}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(estimateItems)}">
+          <td colspan="5" class="text-center" th:text="#{message.emptyBreakdown}"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row mb-3">
+      <div class="text-center">
+        <a th:href="@{|/estimates/edit/${estimate.id}|}" th:text="#{button.update}" class="btn btn-primary"></a> <a th:href="@{|/estimates/confirmDelete/${estimate.id}|}" th:text="#{button.delete}"
+          class="btn btn-danger"></a> <a th:href="@{/estimates}" th:text="#{button.back}" class="btn btn-secondary"></a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

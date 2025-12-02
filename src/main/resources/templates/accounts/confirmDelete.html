@@ -1,0 +1,58 @@
+<!-- templates/accounts/confirmDelete.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="~{layout/commonLayout}">
+
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="#{label.accountDeleteConfirm}">アカウント削除確認</title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+
+    <form th:action="@{/accounts/delete/{id}(id=${account.id})}" method="post">
+
+      <div class="card shadow-sm w-50 mx-auto mt-4">
+        <div class="card-header bg-danger text-white text-center">
+          <h1 class="h4 mb-0" th:text="#{label.accountDeleteConfirm}">アカウント削除確認</h1>
+        </div>
+
+        <div class="card-body">
+
+          <!-- アカウント情報 -->
+          <h5 class="card-title text-center mb-4" th:text="${account.username}"></h5>
+
+          <table class="table table-bordered mb-4">
+            <tbody>
+              <tr>
+                <th class="w-50 bg-light text-center" th:text="#{label.role}"></th>
+                <td th:text="${account.role}">ROLE_USER</td>
+              </tr>
+              <tr>
+                <th class="bg-light text-center" th:text="#{label.fullName}"></th>
+                <td th:text="${account.fullName}"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 警告メッセージ -->
+          <p class="text-center text-danger fw-bold fs-5 mb-4">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <span th:text="#{message.deleteConfirm}"></span>
+          </p>
+
+          <!-- ボタン -->
+          <div class="d-flex justify-content-center gap-3">
+            <button type="submit" class="btn btn-danger px-4" th:text="#{button.delete}"></button>
+            <a th:href="@{/accounts}" class="btn btn-secondary px-4" th:text="#{button.cancel}"></a>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>

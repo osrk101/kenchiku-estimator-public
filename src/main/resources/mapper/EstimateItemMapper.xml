@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kenchiku_estimator.repository.EstimateItemMapper">
+
+    <!-- 見積書アイテムを新規作成 -->
+    <insert id = "insertEstimateItem" parameterType="com.kenchiku_estimator.model.EstimateItem">
+        INSERT INTO estimate_items (estimate_id, item_name, unit_price, quantity, unit)
+        VALUES (#{estimateId}, #{itemName}, #{unitPrice}, #{quantity}, #{unit})
+    </insert>
+
+    <!-- 該当の見積書アイテムを取得する -->
+    <select id="findByEstimateId" resultType="com.kenchiku_estimator.model.EstimateItem">
+        SELECT * FROM estimate_items 
+        WHERE estimate_id = #{id}
+    </select>
+
+    <!-- 見積書アイテムの更新をする -->
+    <update id="updateEstimateItem" parameterType="com.kenchiku_estimator.model.EstimateItem">
+        UPDATE estimate_items
+        SET item_name = #{itemName}, unit_price = #{unitPrice}, quantity = #{quantity}, unit = #{unit}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 見積書アイテムの削除をする -->
+    <delete id="deleteEstimateItem" parameterType="int">
+        DELETE FROM estimate_items 
+        WHERE estimate_id = #{estimateId}
+    </delete>
+
+</mapper>

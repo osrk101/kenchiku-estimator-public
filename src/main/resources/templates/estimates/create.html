@@ -1,0 +1,232 @@
+<!-- templates/estimates/create.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/commonLayout}">
+
+<head>
+<meta charset="UTF-8">
+<title th:text="#{label.estimateCreate}"></title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <h1 th:text="#{label.estimateCreate}"></h1>
+
+    <form class="row" th:action="@{/estimates/create}" method="post" th:object="${estimateForm}">
+      <!-- 件名 -->
+      <div class="col-4">
+        <label for="title" th:text="#{label.title}" class="form-label"></label>
+        <input type="text" th:field="*{title}" class="form-control">
+        <th:block th:with="fieldName='title'">
+          <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{title}" class="text-danger"></div>
+        </th:block>
+        <div class="form-text" th:text="#{message.titleValid}"></div>
+      </div>
+      <!-- 顧客名 -->
+      <div class="col-4">
+        <label for="clientName" th:text="#{label.clientName}" class="form-label"></label>
+        <input type="text" th:field="*{clientName}" class="form-control">
+        <th:block th:with="fieldName='clientName'">
+          <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{clientName}" class="text-danger"></div>
+        </th:block>
+        <div class="form-text" th:text="#{message.clientNameValid}"></div>
+      </div>
+      <!-- 作成者 -->
+      <div class="col-4">
+        <label for="createdBy" th:text="#{label.createdBy}" class="form-label"></label> <select class="form-select" th:field="*{createdBy}">
+          <option value=""></option>
+          <option th:each="account : ${fullNameList}" th:value="${account.id}" th:text="${account.fullName}" th:selected="${account.id} == ${selectedAccountId}"></option>
+        </select>
+        <th:block th:with="fieldName='createdBy'">
+          <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{createdBy}" class="text-danger"></div>
+        </th:block>
+      </div>
+
+      <!-- 内訳テーブル -->
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center" th:text="#{label.estimateBreakdown}"></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+          <div class="table-responsive mb-0">
+            <table class="table table-bordered" id="items">
+              <thead class="table-light">
+                <tr>
+                  <th th:text="#{label.itemName}"></th>
+                  <th th:text="#{label.unitPrice}"></th>
+                  <th th:text="#{label.quantity}"></th>
+                  <th th:text="#{label.unit}"></th>
+                  <th th:text="#{label.rowTotal}"></th>
+                  <th th:text="#{label.controll}"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 内訳行の表示 -->
+                <tr th:each="item, stat : *{items}">
+                  <td><input type="text" th:field="*{items[__${stat.index}__].itemName}" class="form-control"> <th:block th:with="fieldName=${'items[' + stat.index + '].itemName'}">
+                      <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{items[__${stat.index}__].itemName}" class="text-danger"></div>
+                    </th:block></td>
+                  <td><input type="number" min="0" step="0.01" th:field="*{items[__${stat.index}__].unitPrice}" class="form-control"> <th:block
+                      th:with="fieldName=${'items[' + stat.index + '].unitPrice'}">
+                      <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{items[__${stat.index}__].unitPrice}" class="text-danger"></div>
+                    </th:block></td>
+                  <td><input type="number" min="0" step="0.01" th:field="*{items[__${stat.index}__].quantity}" class="form-control"> <th:block
+                      th:with="fieldName=${'items[' + stat.index + '].quantity'}">
+                      <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{items[__${stat.index}__].quantity}" class="text-danger"></div>
+                    </th:block></td>
+                  <td><input type="text" th:field="*{items[__${stat.index}__].unit}" class="form-control"> <th:block th:with="fieldName=${'items[' + stat.index + '].unit'}">
+                      <div th:if="${#fields.hasErrors(fieldName)}" th:errors="*{items[__${stat.index}__].unit}" class="text-danger"></div>
+                    </th:block></td>
+                  <td><input type="text" class="form-control js-row-total" readonly
+                      th:value="${(item.unitPrice != null and item.quantity != null)
+               ? #numbers.formatDecimal(item.unitPrice * item.quantity, 1, 'COMMA', 2, 'POINT')
+               : ''
+           }">
+                  </td>
+                  <!-- 内訳行削除ボタン -->
+                  <td>
+                    <button type="button" class="btn btn-danger" th:text="#{button.delete}" style="white-space: nowrap;" th:onclick="'removeItem(this)'"></button>
+                  </td>
+                </tr>
+              </tbody>
+
+              <!-- 内訳全体エラー表示 -->
+              <tr th:if="${#fields.hasErrors('items')}">
+                <td colspan="6">
+                  <div class="alert alert-danger" th:errors="*{items}"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- 合計金額表示 -->
+        <div class="col-2">
+          <div>
+            <label class="form-label" th:text="#{label.subtotal}"></label>
+            <input id="subtotal" type="text" class="form-control" readonly th:value="${#numbers.formatInteger(estimateForm.subtotal, 1, 'COMMA')}">
+          </div>
+          <div>
+            <label class="form-label" th:text="#{label.tax}"></label>
+            <input id="tax" type="text" class="form-control" readonly th:value="${#numbers.formatInteger(estimateForm.tax, 1, 'COMMA')}">
+          </div>
+          <div>
+            <label class="form-label" th:text="#{label.totalWithTax}"></label>
+            <input id="total" type="text" class="form-control" readonly th:value="${#numbers.formatInteger(estimateForm.total, 1, 'COMMA')}">
+          </div>
+        </div>
+      </div>
+
+      <!-- 内訳追加ボタン -->
+      <div class="row">
+        <div class="col-2">
+          <button type="button" class="btn btn-secondary" onclick="addItem()" th:text="#{button.addItem}"></button>
+        </div>
+        <!-- 再計算ボタン -->
+        <div class="col-2">
+          <button type="button" class="btn btn-secondary" onclick="calculateTotal()" th:text="#{button.recalculate}"></button>
+        </div>
+      </div>
+
+
+      <!-- グローバルエラー -->
+      <div class=" row">
+        <div class="col-4">
+          <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" th:errors="*{}"></div>
+        </div>
+        <!-- ボタン -->
+        <div class="col-4 text-center">
+          <button type="submit" th:text="#{button.create}" class="btn btn-primary"></button>
+          <a th:href="@{/estimates}" th:text="#{button.back}" class="btn btn-secondary"></a>
+        </div>
+      </div>
+    </form>
+
+    <!-- 内訳項目のテンプレート-->
+    <template id="itemRowTemplate">
+      <tr>
+        <td><input type="text" name="items[__index__].itemName" class="form-control"></td>
+        <td><input type="number" name="items[__index__].unitPrice" step="0.01" class="form-control"></td>
+        <td><input type="number" name="items[__index__].quantity" step="0.01" class="form-control"></td>
+        <td><input type="text" name="items[__index__].unit" class="form-control"></td>
+        <td><input type="text" class="form-control js-row-total" value="0.00" readonly></td>
+        <td>
+          <button type="button" class="btn btn-danger" th:text="#{button.delete}" style="white-space: nowrap;" onclick="removeItem(this)"></button>
+        </td>
+      </tr>
+    </template>
+  </div>
+
+  <!--  JavaScript -->
+  <div layout:fragment="script">
+    <script>
+
+			// 内訳行の追加
+			function addItem() {
+				const tbody = document.querySelector("#items tbody");
+				const index = tbody.children.length;
+				const template = document.querySelector("#itemRowTemplate").innerHTML;
+				const rowHtml = template.replace(/__index__/g, index);
+				const tempDiv = document.createElement("tbody");
+				tempDiv.innerHTML = rowHtml;
+				const newRow = tempDiv.querySelector("tr");
+
+				tbody.appendChild(newRow);
+				calculateTotal(); //行追加後に再計算
+			}
+			
+			// 内訳行の削除
+			function removeItem(button) {
+				const row = button.closest("tr");
+				if (row) {
+					row.remove();
+				}
+				calculateTotal(); //行削除後に再計算
+			}
+			
+			// 金額計算
+			function calculateTotal() {
+				const items = document.querySelectorAll("#items tbody tr");
+				let subtotal = 0;
+
+				items.forEach(item => {
+					const unitPrice = parseFloat(item.querySelector("input[name$='.unitPrice']").value) || 0;
+					const quantity = parseFloat(item.querySelector("input[name$='.quantity']").value) || 0;
+					const rowTotal = unitPrice * quantity;
+					// 行小計を表示
+					const rowTotalInput = item.querySelector(".js-row-total");
+					if (rowTotalInput) {
+	                    rowTotalInput.value = rowTotal.toFixed(2);
+	                }	
+					subtotal += rowTotal;
+                });
+				const subtotalInt = Math.floor(subtotal); // 小計を整数に切り下げ
+				const tax = Math.floor(subtotalInt * 0.1); // 税率10%
+				const total = subtotalInt + tax; // 合計金額
+				
+			    const subtotalInput = document.getElementById("subtotal");
+			    const taxInput      = document.getElementById("tax");
+			    const totalInput    = document.getElementById("total");
+
+			    if (subtotalInput) {
+			      subtotalInput.value = subtotalInt.toLocaleString();
+			    }
+			    if (taxInput) {
+			      taxInput.value = tax.toLocaleString();
+			    }
+			    if (totalInput) {
+			      totalInput.value = total.toLocaleString();
+			    }
+			}
+			document.addEventListener("DOMContentLoaded", function () {
+				const itemsDiv = document.getElementById("items");
+				itemsDiv.addEventListener("input", calculateTotal);
+				calculateTotal(); // 初期計算
+			});
+
+		</script>
+  </div>
+
+</body>
+
+</html>
