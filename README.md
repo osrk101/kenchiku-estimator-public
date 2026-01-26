@@ -5,10 +5,11 @@
 スプレッドシート等の表計算ソフトを使用している個人または中小企業での使用を想定しています。
 ## 主な機能
 ### 見積書一覧
-![見積書一覧]https://github.com/osrk101/kenchiku-estimator-public/raw/main/estimate_view.png
+![見積書一覧](https://github.com/osrk101/kenchiku-estimator-public/raw/main/estimate_view.png)
 
 ### 見積書新規作成
 https://github.com/osrk101/kenchiku-estimator-public/raw/main/estimate_Create.mp4
+
 
 ### 編集
 https://github.com/osrk101/kenchiku-estimator-public/raw/main/estimate_Edit.mp4
