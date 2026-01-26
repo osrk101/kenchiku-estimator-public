@@ -56,5 +56,6 @@ https://github.com/user-attachments/assets/53082689-474a-4cd0-a897-a4ba15b8c7eb
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
 ## 工夫した点
-- JavaScriptを使用し、入力内容に応じて合計金額をリアルタイムに再計算・表示することで、保存や再読み込みをせずに金額を確認できるUIを実装しました。
+- JavaScriptを使用し、入力内容に応じて合計金額をリアルタイムに再計算・表示することで、<br>
+保存や再読み込みをせずに金額を確認できるUIを実装しました。
 - 既存の見積もりを再利用できるようにし、過去の工事をベースに別件保存できる仕組みを実装しました。
