@@ -7,38 +7,41 @@
 ### 見積書一覧
 ![見積書一覧](https://github.com/osrk101/kenchiku-estimator-public/raw/main/estimate_view.png)
 
-### 見積書新規作成
-
+### 見積書の作成・保存
 https://github.com/user-attachments/assets/3a4a35e3-5a35-48ff-8613-119802de26b9
 
-### 編集
-
-https://github.com/user-attachments/assets/fdbd6664-4559-4f19-be33-d0603748191b
-
-### 別件で保存
-
+### 過去の見積をベースにした別件保存
 https://github.com/user-attachments/assets/3e8f66b3-f746-4610-8f7e-4d4e3d5980e7
 
-### 削除
-
-https://github.com/user-attachments/assets/42774b6e-1ac3-4087-a9b7-7fdda90db670
-
-### 検索
-
+### 見積検索
 https://github.com/user-attachments/assets/5f81bd9f-267c-4811-b55c-0913e98aa047
 
-### ユーザーの新規作成
+<details>
+<summary>その他の操作動画</summary>
+  
+- **見積編集**
+https://github.com/user-attachments/assets/ae3fde79-5b48-4b92-9b3b-d63fd9b
+- **ユーザー作成**
+https://github.com/user-attachments/assets/53082689-474a-4cd0-a897-a4ba15b8c7eb
 
-https://github.com/user-attachments/assets/fcb3838a-581a-4ebc-a0c6-ed17ec3a2635
+</details>
 
-### 編集
+## 使用技術
 
-https://github.com/user-attachments/assets/ae3fde79-5b48-4b92-9b3b-d63fd9bcf10f
+### フロントエンド
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
 
-### 削除
+### バックエンド
+![Java](https://img.shields.io/badge/Java-007396?logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
+![MyBatis](https://img.shields.io/badge/MyBatis-000000?logoColor=white)
 
-https://github.com/user-attachments/assets/c4746d85-af37-4df8-99e6-b7ae207c1fc4
+### データベース
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
 ## 工夫した点
-以前に類似した工事をしている場合、既存の見積もりをベースに別件で保存できるようにしました。
-JavaScriptを使用し、詳細入力中にリアルタイムに合計金額が表示されるようにしています。
+- JavaScriptを使用し、入力内容に応じて合計金額をリアルタイムに再計算・表示することで、保存や再読み込みをせずに金額を確認できるUIを実装しました。
+- 既存の見積もりを再利用できるようにし、過去の工事をベースに別件保存できる仕組みを実装しました。
