@@ -14,17 +14,25 @@
 ### 見積書の作成・保存
 工事項目・数量・単価を入力することで、リアルタイムに金額を確認しながら見積書を作成できます。
 
-https://github.com/user-attachments/assets/3a4a35e3-5a35-48ff-8613-119802de26b9
+
+https://github.com/user-attachments/assets/b35f44f0-13ac-4232-b431-68633e76c187
+
+
 
 ### 過去の見積をベースにした別件保存
 過去に作成した見積書をコピーし、内容を編集して別案件として保存することができます。  
 
-https://github.com/user-attachments/assets/3e8f66b3-f746-4610-8f7e-4d4e3d5980e7
+
+https://github.com/user-attachments/assets/6e4cecbb-1447-431d-a838-f21fb8d1b92a
+
+
 
 ### 見積検索
 見積番号や件名などの条件を指定して、目的の見積書を素早く検索できます。  
 
-https://github.com/user-attachments/assets/5f81bd9f-267c-4811-b55c-0913e98aa047
+
+https://github.com/user-attachments/assets/d42c2496-760b-4b95-a57c-525ddd196ad3
+
 
 <details>
 <summary>その他の操作動画</summary>
@@ -32,12 +40,18 @@ https://github.com/user-attachments/assets/5f81bd9f-267c-4811-b55c-0913e98aa047
 - **見積編集**
 - 既存の見積書の内容を修正し、再計算・更新を行うことができます。
 
-https://github.com/user-attachments/assets/731f7591-af51-49de-9f36-dd24e68a6193
+
+https://github.com/user-attachments/assets/5ab02720-c5f7-435a-926d-8c85c2835e96
+
+
 
 - **ユーザー作成**
 - 新しいユーザーアカウントを作成し、見積管理をユーザー単位で行えるようにしています。
   
-https://github.com/user-attachments/assets/53082689-474a-4cd0-a897-a4ba15b8c7eb
+
+https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
+
+
 
 </details>
 
