@@ -15,7 +15,9 @@
 工事項目・数量・単価を入力することで、リアルタイムに金額を確認しながら見積書を作成できます。
 
 
-https://github.com/user-attachments/assets/6f0c19c8-7bce-46ce-88a6-f193810514ea
+
+https://github.com/user-attachments/assets/a8a2c379-53e1-403c-b1b8-aed73c668898
+
 
 
 
