@@ -18,7 +18,6 @@ https://github.com/user-attachments/assets/3a4a35e3-5a35-48ff-8613-119802de26b9
 
 ### 過去の見積をベースにした別件保存
 過去に作成した見積書をコピーし、内容を編集して別案件として保存することができます。  
-類似工事の見積作成を効率化することを目的としています。  
 
 https://github.com/user-attachments/assets/3e8f66b3-f746-4610-8f7e-4d4e3d5980e7
 
@@ -32,11 +31,12 @@ https://github.com/user-attachments/assets/5f81bd9f-267c-4811-b55c-0913e98aa047
   
 - **見積編集**
 - 既存の見積書の内容を修正し、再計算・更新を行うことができます。
-- 
-https://github.com/user-attachments/assets/ae3fde79-5b48-4b92-9b3b-d63fd9b
+
+https://github.com/user-attachments/assets/731f7591-af51-49de-9f36-dd24e68a6193
+
 - **ユーザー作成**
 - 新しいユーザーアカウントを作成し、見積管理をユーザー単位で行えるようにしています。
-- 
+  
 https://github.com/user-attachments/assets/53082689-474a-4cd0-a897-a4ba15b8c7eb
 
 </details>
@@ -58,6 +58,13 @@ https://github.com/user-attachments/assets/53082689-474a-4cd0-a897-a4ba15b8c7eb
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
 ## 工夫した点
+- Spring BootをベースにMyBatisでデータベースアクセスを効率化し、<br>
+簡潔でメンテナンス性の高い構造を実現しました。<br>
+これにより、迅速な開発と拡張性の高いコードベースを実現しました。
 - JavaScriptを使用し、入力内容に応じて合計金額をリアルタイムに再計算・表示することで、<br>
 保存や再読み込みをせずに金額を確認できるUIを実装しました。
-- 既存の見積もりを再利用できるようにし、過去の工事をベースに別件保存できる仕組みを実装しました。
+- 類似した見積の作成を効率化するため、<br>
+既存の見積もりを再利用できるようにし、過去の工事をベースに別件保存できる仕組みを実装しました。
+- 見積件数が増えた場合でも目的の見積を素早く探せるよう、
+  見積番号や件名などの条件で検索できる機能を実装しました。
+- ユーザー毎に見積情報を管理し、複数人での利用を想定した構成としました。
