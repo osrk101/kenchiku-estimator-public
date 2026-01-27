@@ -88,8 +88,8 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 本プロジェクトでは、MySQLを使用して見積管理データを管理しています。
 データベースの構築には、以下のSQLファイルを順番に実行してください。
 
-### データベース設計資料
-- **[テーブル定義書.pdf](https://github.com/user-attachments/files/24877742/default.pdf)**: 各テーブルの詳細なカラム定義や型を記載しています。
+### データベース設計資料 
+[テーブル定義書.pdf](https://github.com/user-attachments/files/24878033/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
 
 ### 1. SQLファイルの取得
 リポジトリ内の `database/` フォルダに格納されている以下のファイルをダウンロード、またはクローンしてください。
