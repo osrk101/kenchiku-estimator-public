@@ -74,33 +74,7 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 ### データベース
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
-## データベース構成
 
-本プロジェクトでは、MySQLを使用して見積管理データを管理しています。
-データベースの構築には、以下のSQLファイルを順番に実行してください。
-
-### 1. SQLファイルの取得
-リポジトリ内の `database/` フォルダに格納されている以下のファイルをダウンロード、またはクローンしてください。
-
-- [cite_start]**[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義 [cite: 2, 4, 6, 8]
-- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
-
-### 2. セットアップ手順
-
-コマンドライン、または HeidiSQL などの管理ツールで以下の順に実行します。
-
-### コマンドライン（MySQL）の場合
-```bash
-# 1. データベースとテーブルの作成
-mysql -u [ユーザー名] -p < database/schema.sql
-
-# 2. サンプルデータのインポート
-mysql -u [ユーザー名] -p < database/data.sql
-
-
-
-### テーブル定義書
-  [テーブル定義書.pdf](https://github.com/user-attachments/files/24877742/default.pdf)
 
 ### 工夫した点
 - Spring BootをベースにMyBatisでデータベースアクセスを効率化し、簡潔でメンテナンス性の高い構造を実現しました。これにより、迅速な開発と拡張性の高いコードベースを実現しました。
@@ -108,3 +82,30 @@ mysql -u [ユーザー名] -p < database/data.sql
 - 類似した見積の作成を効率化するため、既存の見積もりを再利用できるようにし、過去の工事をベースに別件保存できる仕組みを実装しました。
 - 見積件数が増えた場合でも目的の見積を素早く探せるよう、見積番号や件名などの条件で検索できる機能を実装しました。
 - ユーザー毎に見積情報を管理し、複数人での利用を想定した構成としました。
+
+## データベース構成
+
+本プロジェクトでは、MySQLを使用して見積管理データを管理しています。
+データベースの構築には、以下のSQLファイルを順番に実行してください。
+
+### データベース設計資料
+- **[テーブル定義書.pdf](https://github.com/user-attachments/files/24877742/default.pdf)**: 各テーブルの詳細なカラム定義や型を記載しています。
+
+### 1. SQLファイルの取得
+リポジトリ内の `database/` フォルダに格納されている以下のファイルをダウンロード、またはクローンしてください。
+
+- **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
+- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
+
+### 2. セットアップ手順
+
+MySQLコマンドラインを使用して、以下の順に実行してください。
+
+### コマンドライン（MySQL）の場合
+
+```bash
+# 1. データベースとテーブルの作成
+mysql -u [ユーザー名] -p < database/schema.sql
+
+# 2. サンプルデータのインポート
+mysql -u [ユーザー名] -p < database/data.sql
