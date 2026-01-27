@@ -73,6 +73,29 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 ### データベース
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
+## データベース構成
+
+本プロジェクトでは、MySQLを使用して見積管理データを管理しています。
+データベースの構築には、以下のSQLファイルを順番に実行してください。
+
+### 1. SQLファイルの取得
+リポジトリ内の `database/` フォルダに格納されている以下のファイルをダウンロード、またはクローンしてください。
+
+- [cite_start]**[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義 [cite: 2, 4, 6, 8]
+- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
+
+### 2. セットアップ手順
+
+コマンドライン、または HeidiSQL などの管理ツールで以下の順に実行します。
+
+#### コマンドライン（MySQL）の場合
+```bash
+# 1. データベースとテーブルの作成
+mysql -u [ユーザー名] -p < database/schema.sql
+
+# 2. サンプルデータのインポート
+mysql -u [ユーザー名] -p < database/data.sql
+
 ## 工夫した点
 - Spring BootをベースにMyBatisでデータベースアクセスを効率化し、<br>
 簡潔でメンテナンス性の高い構造を実現しました。<br>
