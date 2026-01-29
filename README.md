@@ -87,7 +87,8 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 本プロジェクトでは、MySQLを使用して見積管理データを管理しています。
 
 ### データベース設計資料 
-[テーブル定義書.pdf](https://github.com/user-attachments/files/24878033/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
+
+[テーブル定義書.pdf](https://github.com/user-attachments/files/24927846/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
 
 ### SQLファイル
 - **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
