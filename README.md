@@ -106,7 +106,7 @@ MySQL：8.0.44
 
 OS：Windows 11 Pro (24H2)
 
-  macOS / Linux 環境では動作未確認です。
+※ macOS / Linux 環境では動作未確認です。
 
 ※ MySQL がインストールされていない場合は、事前にインストールしてください。
 
