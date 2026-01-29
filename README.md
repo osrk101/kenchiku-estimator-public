@@ -108,6 +108,8 @@ OS：Windows 11 Pro (24H2)
 
 
 #### 2. リポジトリのクローン
+
+
 git clone https://github.com/osrk101/kenchiku-estimator-public.git
 cd kenchiku-estimator-public
 
@@ -143,8 +145,9 @@ source /path/to/project/database/schema.sql;
 
 続けて、data.sql を実行し、テスト用のサンプルデータを投入します。
 
-
+```sql
 source /path/to/project/database/data.sql;
+```
 
 エラーが表示されなければ、データ投入は成功です。
 
@@ -153,27 +156,29 @@ source /path/to/project/database/data.sql;
 
 application.properties に、以下の設定を行ってください。
 
-
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/kenchiku_estimate
 
 spring.datasource.username=
 
 spring.datasource.password=
-
+```
 ※ ユーザー名・パスワードは各自の MySQL 環境に合わせて設定してください。
-※ セキュリティ上の理由から、リポジトリには実際の値は記載していません。
 
 
 #### 7. アプリケーションの起動
 
 プロジェクトのルートディレクトリで、以下のコマンドを実行します。
 
-
+```bash
 mvnw spring-boot:run
+```
 
 起動後、ブラウザで以下にアクセスしてください。
 
+```bash
 http://localhost:8080
+```
 
 ※ ポート番号は application.properties の設定に従ってください。
 
