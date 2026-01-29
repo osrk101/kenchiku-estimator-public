@@ -105,6 +105,7 @@ Java：17.0.15
 MySQL：8.0.44
 
 OS：Windows 11 Pro (24H2)
+  macOS / Linux 環境では動作未確認です。
 
 ※ MySQL がインストールされていない場合は、事前にインストールしてください。
 
@@ -137,11 +138,8 @@ schema.sql を実行して、データベースとテーブルを作成します
 ```sql
 source /path/to/project/database/schema.sql;
 ```
-
 ※ /path/to/project は、本リポジトリをクローンしたディレクトリ（README.md が配置されているディレクトリ）に置き換えてください。
-
 ※ Windows 環境では、パス区切り文字として / を使用してください。
-
 
 #### 5. 初期データ（テストデータ）の投入
 
@@ -165,8 +163,11 @@ spring.datasource.username=
 
 spring.datasource.password=
 ```
-※ ユーザー名・パスワードは各自の MySQL 環境に合わせて設定してください。
 
+```text
+※ ユーザー名・パスワードは各自の MySQL 環境に合わせて設定してください。
+※ MySQL のポート番号やホスト名を変更している場合は、spring.datasource.url も各自の環境に合わせて修正してください。
+```
 
 #### 7. アプリケーションの起動
 
@@ -181,9 +182,7 @@ mvnw spring-boot:run
 ```bash
 http://localhost:8080
 ```
-
 ※ ポート番号は application.properties の設定に従ってください。
-
 
 #### 8. テスト用アカウント情報
 
@@ -195,10 +194,5 @@ data.sql には、以下のテスト用アカウントが登録されていま�
 | testuser | ADMIN |
 | suzuki | USER |
 
+※ すべてのテスト用アカウントのパスワードは共通で  `password` に設定しています。  
 ※ パスワードは BCrypt でハッシュ化されています。
-
-
-
-
-
-
