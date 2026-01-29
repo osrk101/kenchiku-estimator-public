@@ -3,7 +3,7 @@ USE `kenchiku_estimate`;
 -- 外部キーチェックを一時的に無効化
 SET FOREIGN_KEY_CHECKS=0;
 
---- 文字コードをUTF-8に設定
+-- 文字コードをUTF-8に設定
 SET NAMES utf8mb4;
 
 -- accounts への挿入
