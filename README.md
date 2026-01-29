@@ -112,11 +112,12 @@ OS：Windows 11 Pro (24H2)
 
 #### 2. リポジトリのクローン
 
-
+```bash
 git clone https://github.com/osrk101/kenchiku-estimator-public.git
-
+```
+```bash
 cd kenchiku-estimator-public
-
+```
 ※ 以降の手順では、このディレクトリ（README.md が配置されている場所）を
 プロジェクトのルートディレクトリとします。
 
