@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `username` varchar(50) NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `role` varchar(20) NOT NULL,
-  `full_name` varchar(50) NOT NULL,
+  `full_name` varchar(100
+  ) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -17,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 CREATE TABLE IF NOT EXISTS `estimates` (
   `id` int NOT NULL AUTO_INCREMENT,
   `estimate_number` varchar(20) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `client_name` varchar(100) NOT NULL,
   `created_by` int NOT NULL,
   `created_at` date NOT NULL,
