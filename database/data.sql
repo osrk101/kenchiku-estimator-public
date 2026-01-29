@@ -6,6 +6,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- 文字コードをUTF-8に設定
 SET NAMES utf8mb4;
 
+-- テーブルを初期化
+TRUNCATE TABLE estimate_items;
+TRUNCATE TABLE estimates;
+TRUNCATE TABLE accounts;
+
 -- accounts への挿入
 INSERT INTO `accounts` (`id`, `username`, `password`, `role`, `full_name`) VALUES
 	(1, 'adminuser', '$2a$10$FpPta3XLvOvlmzZWpRmxBuSzjkIlhHa954AdGLrV.g7AsOWUFAu2K', 'ADMIN', '山田太郎'),
