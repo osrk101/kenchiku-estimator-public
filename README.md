@@ -167,11 +167,12 @@ source /path/to/project/database/data.sql;
 application.properties に、以下の設定を行ってください。
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/kenchiku_estimate
+spring.datasource.url=jdbc:mysql://localhost:3306/kenchiku_estimate?autoCommit=true
 
-spring.datasource.username=
-
-spring.datasource.password=
+# MySQLのユーザー名（ダミー）
+spring.datasource.username=dummy_user
+# MySQLのパスワード（ダミー）
+spring.datasource.password=dummy_password
 ```
 
 ```text
