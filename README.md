@@ -82,23 +82,9 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 - 見積件数が増えた場合でも目的の見積を素早く探せるよう、見積番号や件名などの条件で検索できる機能を実装しました。
 - ユーザー毎に見積情報を管理し、複数人での利用を想定した構成としました。
 
+## 事前資料
 
-
-## ローカル環境でのアプリケーション起動手順
-
-### 事前資料
-
-#### データベース設計資料 
-
-[テーブル定義書.pdf](https://github.com/user-attachments/files/24927846/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
-
-#### SQLファイル
-- **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
-- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
-
-本アプリケーションを実行するために、以下の手順でデータベースを構築してください。
-
-### 1. 動作環境
+### 動作環境
 
 以下の環境で動作確認しています。
 
@@ -110,7 +96,19 @@ OS：Windows 11 Pro (24H2)
 
 ※ macOS / Linux 環境では動作未確認です。
 
-### 2. 事前準備
+### データベース設計資料 
+
+[テーブル定義書.pdf](https://github.com/user-attachments/files/24927846/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
+
+### SQLファイル
+- **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
+- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
+
+本アプリケーションを実行するために、以下の手順でデータベースを構築してください。
+
+## ローカル環境でのアプリケーション起動手順
+
+### 1. 事前準備
 
 本アプリケーションを実行するには、以下がインストールされている必要があります。
 
@@ -123,7 +121,7 @@ Maven（mvnw を使用するため、別途インストールは不要）
 ※ Java / MySQL のインストール方法については、公式サイトの手順を参照してください。
 
 
-### 3. リポジトリのクローン
+### 2. リポジトリのクローン
 
 ```bash
 git clone https://github.com/osrk101/kenchiku-estimator-public.git
@@ -134,7 +132,7 @@ cd kenchiku-estimator-public
 
 ※ 以降の手順では、このディレクトリ（README.md が配置されている場所）を プロジェクトのルートディレクトリとします。
 
-### 4. MySQL にログイン
+### 3. MySQL にログイン
 
 MySQL にログインします。
 
@@ -145,7 +143,7 @@ mysql -u root -p
 パスワードを入力してください。
 
 
-### 5. データベース・テーブルの作成（schema.sql）
+### 4. データベース・テーブルの作成（schema.sql）
 
 schema.sql を実行して、データベースとテーブルを作成します。
 
@@ -155,7 +153,7 @@ source /path/to/project/database/schema.sql;
 ※ /path/to/project は、本リポジトリをクローンしたディレクトリに置き換えてください。
 ※ Windows 環境では、パス区切り文字として / を使用してください。
 
-### 6. 初期データ（テストデータ）の投入
+### 5. 初期データ（テストデータ）の投入
 
 続けて、data.sql を実行し、テスト用のサンプルデータを投入します。
 
@@ -166,7 +164,7 @@ source /path/to/project/database/data.sql;
 エラーが表示されなければ、データ投入は成功です。
 
 
-### 7. application.properties の設定
+### 6. application.properties の設定
 
 application.properties に、以下の設定を行ってください。
 
@@ -184,7 +182,7 @@ spring.datasource.password=dummy_password
 ※ MySQL のポート番号やホスト名を変更している場合は、spring.datasource.url も各自の環境に合わせて修正してください。
 ```
 
-### 8. アプリケーションの起動
+### 7. アプリケーションの起動
 
 プロジェクトのルートディレクトリで、以下のコマンドを実行します。
 
@@ -199,7 +197,7 @@ http://localhost:8080
 ```
 ※ ポート番号は application.properties の設定に従ってください。
 
-### 9. テスト用アカウント情報
+### 8. テスト用アカウント情報
 
 data.sql には、以下のテスト用アカウントが登録されています。
 
