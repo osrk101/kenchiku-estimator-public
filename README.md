@@ -108,10 +108,20 @@ OS：Windows 11 Pro (24H2)
 
 ※ macOS / Linux 環境では動作未確認です。
 
-※ MySQL がインストールされていない場合は、事前にインストールしてください。
+### 2. 事前準備
+
+本アプリケーションを実行するには、以下がインストールされている必要があります。
+
+Java 17（JDK）
+
+MySQL 8.0 以上
+
+Maven（mvnw を使用するため、別途インストールは不要）
+
+※ Java / MySQL のインストール方法については、公式サイトの手順を参照してください。
 
 
-#### 2. リポジトリのクローン
+#### 3. リポジトリのクローン
 
 ```bash
 git clone https://github.com/osrk101/kenchiku-estimator-public.git
@@ -120,7 +130,7 @@ git clone https://github.com/osrk101/kenchiku-estimator-public.git
 cd kenchiku-estimator-public
 ```
 
-#### 3. MySQL にログイン
+#### 4. MySQL にログイン
 
 MySQL にログインします。
 
@@ -131,7 +141,7 @@ mysql -u root -p
 パスワードを入力してください。
 
 
-#### 4. データベース・テーブルの作成（schema.sql）
+#### 5. データベース・テーブルの作成（schema.sql）
 
 schema.sql を実行して、データベースとテーブルを作成します。
 
@@ -141,7 +151,7 @@ source /path/to/project/database/schema.sql;
 ※ /path/to/project は、本リポジトリをクローンしたディレクトリ（README.md が配置されているディレクトリ）に置き換えてください。
 ※ Windows 環境では、パス区切り文字として / を使用してください。
 
-#### 5. 初期データ（テストデータ）の投入
+#### 6. 初期データ（テストデータ）の投入
 
 続けて、data.sql を実行し、テスト用のサンプルデータを投入します。
 
@@ -152,7 +162,7 @@ source /path/to/project/database/data.sql;
 エラーが表示されなければ、データ投入は成功です。
 
 
-#### 6. application.properties の設定
+#### 7. application.properties の設定
 
 application.properties に、以下の設定を行ってください。
 
@@ -169,7 +179,7 @@ spring.datasource.password=
 ※ MySQL のポート番号やホスト名を変更している場合は、spring.datasource.url も各自の環境に合わせて修正してください。
 ```
 
-#### 7. アプリケーションの起動
+#### 8. アプリケーションの起動
 
 プロジェクトのルートディレクトリで、以下のコマンドを実行します。
 
@@ -184,7 +194,7 @@ http://localhost:8080
 ```
 ※ ポート番号は application.properties の設定に従ってください。
 
-#### 8. テスト用アカウント情報
+#### 9. テスト用アカウント情報
 
 data.sql には、以下のテスト用アカウントが登録されています。
 
