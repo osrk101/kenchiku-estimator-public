@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 
 
 
-## データベース構築手順
+## ローカル環境でのアプリケーション起動手順
 
 ### データベース設計資料 
 
