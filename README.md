@@ -150,7 +150,7 @@ schema.sql を実行して、データベースとテーブルを作成します
 ```sql
 source /path/to/project/database/schema.sql;
 ```
-※ /path/to/project は、本リポジトリをクローンしたディレクトリ（README.md が配置されているディレクトリ）に置き換えてください。
+※ /path/to/project は、本リポジトリをクローンしたディレクトリに置き換えてください。
 ※ Windows 環境では、パス区切り文字として / を使用してください。
 
 #### 6. 初期データ（テストデータ）の投入
