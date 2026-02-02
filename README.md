@@ -130,6 +130,8 @@ git clone https://github.com/osrk101/kenchiku-estimator-public.git
 cd kenchiku-estimator-public
 ```
 
+※ 以降の手順では、このディレクトリ（README.md が配置されている場所）を プロジェクトのルートディレクトリとします。
+
 #### 4. MySQL にログイン
 
 MySQL にログインします。
