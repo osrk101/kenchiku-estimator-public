@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 
 ## アプリケーション仕様
 
-### 動作環境（動作確認済み）
+### 動作環境
 
 以下の環境で動作確認しています。
 
