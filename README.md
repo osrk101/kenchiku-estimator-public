@@ -82,9 +82,7 @@ https://github.com/user-attachments/assets/d21c73d4-b068-41ed-b58c-41478291ab96
 - 見積件数が増えた場合でも目的の見積を素早く探せるよう、見積番号や件名などの条件で検索できる機能を実装しました。
 - ユーザー毎に見積情報を管理し、複数人での利用を想定した構成としました。
 
-## 事前資料
-
-本アプリケーションの前提条件および設計情報をまとめています。
+## アプリケーション仕様
 
 ### 動作環境
 
@@ -102,12 +100,6 @@ OS：Windows 11 Pro (24H2)
 
 [テーブル定義書.pdf](https://github.com/user-attachments/files/24927846/default.pdf):各テーブルの詳細なカラム定義や型を記載しています。
 
-### SQLファイル
-- **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
-- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
-
-本アプリケーションを実行するために、以下の手順でデータベースを構築してください。
-
 ## ローカル環境でのアプリケーション起動手順
 
 ### 1. 事前準備
@@ -121,7 +113,6 @@ MySQL 8.0 以上
 Maven（mvnw を使用するため、別途インストールは不要）
 
 ※ Java / MySQL のインストール方法については、公式サイトの手順を参照してください。
-
 
 ### 2. リポジトリのクローン
 
@@ -144,8 +135,11 @@ mysql -u root -p
 
 パスワードを入力してください。
 
+### 4. データベースおよびテーブルの作成
 
-### 4. データベース・テーブルの作成（schema.sql）
+#### SQLファイル
+- **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
+- **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
 
 schema.sql を実行して、データベースとテーブルを作成します。
 
@@ -155,7 +149,7 @@ source /path/to/project/database/schema.sql;
 ※ /path/to/project は、本リポジトリをクローンしたディレクトリに置き換えてください。
 ※ Windows 環境では、パス区切り文字として / を使用してください。
 
-### 5. 初期データ（テストデータ）の投入
+### 5. テスト用サンプルデータの投入
 
 続けて、data.sql を実行し、テスト用のサンプルデータを投入します。
 
@@ -164,7 +158,6 @@ source /path/to/project/database/data.sql;
 ```
 
 エラーが表示されなければ、データ投入は成功です。
-
 
 ### 6. application.properties の設定
 
