@@ -139,7 +139,6 @@ mysql -u root -p
 
 ### 4. データベースおよびテーブルの作成
 
-#### SQLファイル
 - **[schema.sql](./database/schema.sql)**: データベースおよびテーブル（accounts, estimates, estimate_items）の構造定義
 - **[data.sql](./database/data.sql)**: テスト用サンプルデータの投入
 
